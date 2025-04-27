@@ -1,6 +1,6 @@
 {
   "name": "nuxt-plausible-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Nuxt module for Plausible Analytics",
   "author": "Dodobibi",
   "repository": "https://github.com/Dodobibi/nuxt-plausible-client",
