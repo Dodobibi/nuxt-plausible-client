@@ -67,14 +67,14 @@ export default defineNuxtConfig({
 
 ## Tracking Custom Events
 
-### Using the `usePlausible` Composable
+### Using the `plausible` Utils
 
 ```ts
 // Tracks the `custom` event
-usePlausible('custom');
+plausible('custom');
 
 // Tracks the `custom` event with props...
-usePlausible('custom', { p: { key: 'value' } });
+plausible('custom', { p: { key: 'value' } });
 ```
 
 ### Adding Custom Properties or Revenue Dynamically
