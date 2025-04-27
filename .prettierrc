@@ -1,0 +1,8 @@
+{
+  "endOfLine": "lf",
+  "printWidth": 120,
+  "singleAttributePerLine": true,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all"
+}

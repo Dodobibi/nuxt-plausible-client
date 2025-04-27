@@ -1,0 +1,60 @@
+{
+  "name": "nuxt-plausible-client",
+  "version": "1.0.0",
+  "description": "A Nuxt module for Plausible Analytics",
+  "author": "Dodobibi",
+  "repository": "https://github.com/Dodobibi/nuxt-plausible-client",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.16.2"
+  },
+  "peerDependencies": {
+    "defu": "^6.1.4"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^2.4.0",
+    "@nuxt/eslint-config": "^1.3.0",
+    "@nuxt/module-builder": "^1.0.1",
+    "@nuxt/schema": "^3.16.2",
+    "@nuxt/test-utils": "^3.17.2",
+    "@types/node": "latest",
+    "changelogen": "^0.6.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "nuxt": "^3.16.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "~5.8.3",
+    "vitest": "^3.1.2",
+    "vue-tsc": "^2.2.8"
+  },
+  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f"
+}
