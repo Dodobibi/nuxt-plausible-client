@@ -6,7 +6,10 @@ export default defineNuxtPlugin((_nuxtApp) => {
 
   useRouter().afterEach((to, from, f) => {
     if (!f) {
-      plausiblePageview({ url: to.path, referrer: referrer === undefined ? from.fullPath : referrer });
+      plausiblePageview({
+        url: `${window.location.origin}${to.fullPath}`,
+        referrer: referrer === undefined ? from.fullPath : referrer,
+      });
       referrer = undefined;
     }
   });

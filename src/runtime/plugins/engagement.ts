@@ -62,7 +62,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
       currentEngagementTime = 0;
       runningEngagementStart = Date.now();
       currentEngagementMaxScrollDepth = -1;
-      currentEngagementURL = to.path;
+      currentEngagementURL = `${window.location.origin}${to.fullPath}`;
     }
   });
 

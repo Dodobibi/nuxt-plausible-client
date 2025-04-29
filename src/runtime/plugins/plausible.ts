@@ -86,7 +86,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const body = defu(payload, {
       d: config.domain ?? window.location.hostname,
       n: eventName,
-      u: window.location.pathname,
+      u: window.location.href,
       h: !useRouter().options?.history ? '1' : undefined,
       v: TRACKER_SCRIPT_VERSION,
     });
