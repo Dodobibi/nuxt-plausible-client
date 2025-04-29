@@ -9,22 +9,19 @@ export default defineNuxtPlugin(() => {
     // console.log('click event', event);
     const target = (event.target as HTMLElement).closest('a'); // Remonte l'arbre DOM pour trouver l'élément <a> cliqué
     const config = useRuntimeConfig().public.plausible;
-    if (target) {
-      const href = target.href;
-      if (href) {
-        // check if it's an outbound link first
-        if (new URL(target.href).host !== location.host)
-          return config.trackOutboundLinks && plausibleOutboundLink({ url: target.href });
+    if (target && target.href) {
+      const url = new URL(target.href);
+      // check if it's an outbound link first
+      if (url.host !== location.host) return config.trackOutboundLinks && plausibleOutboundLink({ url: url.href });
 
-        // check if it's a file download
-        function isDownloadToTrack(url: string) {
-          if (!url) return false;
-          const fileType = url.split('.').pop();
-          return fileType && config.trackFileDownloads.split(',').includes(fileType);
-        }
-        if (target.hasAttribute('download') || isDownloadToTrack(href))
-          return config.trackFileDownloads && plausibleFileDownload({ url: href });
+      // check if it's a file download
+      function isDownloadToTrack(href: string) {
+        if (!href) return false;
+        const fileType = href.split('.').pop();
+        return fileType && config.trackFileDownloads.split(',').includes(fileType);
       }
+      if (target.hasAttribute('download') || isDownloadToTrack(url.href))
+        return config.trackFileDownloads && plausibleFileDownload({ url: url.href });
     }
   };
 
